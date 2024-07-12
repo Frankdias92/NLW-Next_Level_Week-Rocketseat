@@ -1,18 +1,17 @@
-name: CI
+name: Build and Push Docker Image
 
 on:
   push:
     branches:
-      - dockerDevOps
+      - main
 
 jobs:
-  builde-and-push:
-    name: 'Build and Push'
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Build docker image
-        run: docker build -t Frankdias92/nlw.journey.api:latest .
+    - name: Build Docker image
+      run: docker build -t Frankdias92/nlw.journey.api:latest -f NLW-Journey/devOps/Dockerfile NLW-Journey/devOps
