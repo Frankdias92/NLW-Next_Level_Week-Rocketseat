@@ -1,4 +1,4 @@
-FROM golang:1.22.4-alpine
+FROM golang:1.22.4-alpine as builder
 
 WORKDIR /app
 
@@ -10,8 +10,14 @@ COPY . .
 
 RUN go build -o /bin/journey ./cmd/journey/journey.go
 
+FROM scratch
+
+WORKDIR /app
+
+COPY --from=builder /bin/journey .
+
 EXPOSE 8080
-ENTRYPOINT [ "/bin/journey" ]
+ENTRYPOINT [ "./journey" ]
 
 
 
