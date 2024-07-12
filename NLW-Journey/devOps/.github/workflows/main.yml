@@ -14,4 +14,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build Docker image
-      run: docker build -t Frankdias92/nlw.journey.api:latest -f NLW-Journey/devOps/Dockerfile NLW-Journey/devOps
+      run: docker build -t Frankdias92/nlw.journey.api:latest -f devOps/Dockerfile devOps
