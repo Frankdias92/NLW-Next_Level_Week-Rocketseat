@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  builde-and-push:
+    name: 'Build and Push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build docker image
+        run: docker build -t Frankdias92/nlw.journey.api:latest .
